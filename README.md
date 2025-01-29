@@ -1,50 +1,40 @@
-# React + TypeScript + Vite
+## Тестовое задание для стажировки в VK
+## Компоненты интерфейса
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание
+### Компоненты интерфейса с возможностю через параметры кастомизировать их свойства и внешний вид.
 
-Currently, two official plugins are available:
+React компонент кнопки Button:
+- Использован подоход Compound Components.
+- Основной компонент содержащий в себе остальный подкомпоненты.
+Принимает следующие кастомные параметры:
+ - stylized. Изменяет цветовую комбинацию. Доступные значения: "primary", "secondary";
+ - size. Изменяет размер компонента. Доступные значения: 28, 36, 56;
+ - state. Изменяет состояние компонента. Доступные значения: "enabled", "pressed", "disabled", "loading";
+ - counter. Включает/выключает отображение подкомпонента Counter. Доступные значения: true, false;
+ - focused. Включает/выключает фокус на компонент при загрузке. Доступные значения: true, false;
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ React подкомпонент счетчика Counter (Button.Component):
+ Принимает следующие кастомные параметры:
+ - stylized. Изменяет цветовую комбинацию. Доступные значения: "primary", "secondary";
+ - size. Изменяет размер компонента. Доступные значения: 8, 12, 16, 20, 24;
+ - value. Принимает значение компонента. Доступные значения: string, number;
+ - pulse. Включает/выключает анимацию подкомпонента. Доступные значения: true, false;
 
-## Expanding the ESLint configuration
+React подкомпонент счетчика Label (Button.Label):
+  - Принимает заголовок компонента Button через пропс children.  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+### Архитектура проекта
+- Проект собран на Vite
+- Проект выполнен на TypeScript + React
+- Для работы с UI использовался styled-components.
+- Использован подоход Compound Components.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Установка
+- Клонировать репозиторий;
+- Установить [NodeJS и NPM];
+- В корневой папке проекта выполнить в терминале команду `make install` или `npm install`
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Запуск проекта
+В корневой папке проекта выполнить команду в терминале `make dev` или `npm run dev` которая запустит проект в режиме разрабочика на локальном хосте.
