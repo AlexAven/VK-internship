@@ -1,6 +1,6 @@
-/* eslint-disable max-len */
 import React from 'react';
 import styled, { css } from 'styled-components';
+
 import { Label } from './Label';
 import { Loading } from './Loading';
 import { Counter } from './Counter';
@@ -19,8 +19,10 @@ const ButtonContainer = styled.button<ButtonProps>`
   justify-content: center;
   height: ${(props) => `${props.size}px`};
   width: ${(props) => (props.size === 28 ? '96px' : props.size === 36 ? '112px' : '131px')};
-  background-color: ${(props) => (props.stylize === 'primary' ? 'var(--colors-bg-primary)' : 'var(--colors-bg-secondary)')};
-  color: ${(props) => (props.stylize === 'primary' ? 'var(--colors-text-primary)' : 'var(--colors-text-secondary)')};
+  background-color: ${(props) =>
+    props.stylize === 'primary' ? 'var(--colors-bg-primary)' : 'var(--colors-bg-secondary)'};
+  color: ${(props) =>
+    props.stylize === 'primary' ? 'var(--colors-text-primary)' : 'var(--colors-text-secondary)'};
   border: none;
   border-radius: var(--radii);
   padding: 16px;
@@ -38,7 +40,10 @@ const ButtonContainer = styled.button<ButtonProps>`
     `}
 
   &:hover {
-    background-color: ${(props) => (props.stylize === 'primary' ? 'var(--colors-bg-primary-hover)' : 'var(--colors-bg-secondary-hover)')};
+    background-color: ${(props) =>
+      props.stylize === 'primary'
+        ? 'var(--colors-bg-primary-hover)'
+        : 'var(--colors-bg-secondary-hover)'};
   }
 `;
 
@@ -58,21 +63,25 @@ export const Button: ButtonComponent = ({
   ...rest
 }) => {
   return (
-    <ButtonContainer size={size} stylize={stylize} state={state} focused={focused} counter={true} {...rest}>
+    <ButtonContainer
+      size={size}
+      stylize={stylize}
+      state={state}
+      focused={focused}
+      counter={true}
+      {...rest}
+    >
       {state === 'loading' ? (
         <Loading stylize={stylize} />
       ) : (
-          React.Children.map(children, (child) => {
-            if (React.isValidElement(child)) {
-    if (!counter && child.type === Counter) return null;
-    return React.cloneElement(
-      child as React.ReactElement & { buttonState?: unknown },
-      {
-        buttonState: { size, stylize, state, counter },
-      },
-    );
-  }
-  return child;
+        React.Children.map(children, (child) => {
+          if (React.isValidElement(child)) {
+            if (!counter && child.type === Counter) return null;
+            return React.cloneElement(child as React.ReactElement & { buttonState?: unknown }, {
+              buttonState: { size, stylize, state, counter },
+            });
+          }
+          return child;
         })
       )}
     </ButtonContainer>
