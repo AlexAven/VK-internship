@@ -1,0 +1,25 @@
+:root {
+  /* Типографика */
+  --family: 'IBM Plex mono', sans-serif;
+  --line-height: 20px;
+  --fs-sm: 11px;
+  --fs-md: 14px;
+
+  /* Цвета */
+
+  /* Текст */
+  --colors-text-primary: #ffffff;
+  --colors-text-secondary: #2E2F33;
+
+  /* Интерфейс */
+  --colors-bg-primary: #FF7700;
+  --colors-bg-secondary: #8366561F;
+  --colors-bg-primary-hover: #ff7700dd;
+  --colors-bg-secondary-hover: #8366563f;
+  --colors-ui-border: #0099FF;
+  --colors-bg-ui-primary: #2FB675;
+  --colors-bg-ui-secondary: #8366561F;
+ 
+  /* Другое */
+  --radii: 0.8rem;
+}
