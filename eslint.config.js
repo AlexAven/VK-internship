@@ -29,11 +29,7 @@ export default tseslint.config(
       'object-curly-spacing': ['error', 'always'],
       'comma-dangle': ['error', 'always-multiline'],
       'arrow-parens': ['error', 'always'],
-
-      // Настройка для длины строки
       'max-len': ['error', { code: 100 }],
-
-      // Концы строк
       'linebreak-style': ['error', 'unix'],
     },
   },
